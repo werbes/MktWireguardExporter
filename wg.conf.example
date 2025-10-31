@@ -1,0 +1,17 @@
+# Example base client config used by MktWireguardExporter
+# Copy to wg.conf and replace placeholder values before running the exporter.
+
+[Interface]
+# Optional values used as defaults for all generated client configs
+ListenPort = 51820
+DNS = 1.1.1.1, 9.9.9.9
+
+[Peer]
+# REQUIRED: server's public key
+PublicKey = SERVER_PUBLIC_KEY_BASE64==
+
+# Optional AllowedIPs template. If this list contains any /32 entry,
+# the exporter will replace that /32 with each client's Address (/32) and will
+# reorder so the /32 is last in the list.
+# You can include additional networks that should route via the tunnel.
+AllowedIPs = 10.7.0.123/32, 10.7.0.0/24, 192.168.0.0/16

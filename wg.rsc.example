@@ -1,0 +1,20 @@
+# Example MikroTik RouterOS export snippet for WireGuard peers
+# Copy to wg.rsc and replace placeholder values before running the exporter.
+
+/interface wireguard peers
+add name="client-10.7.0.11" client-address=10.7.0.11/32 client-dns=1.1.1.1 \
+    endpoint-address=vpn.example.com endpoint-port=51820 \
+    private-key="CLIENT_11_PRIVATE_KEY_BASE64==" public-key="CLIENT_11_PUBLIC_KEY_BASE64==" \
+    preshared-key="CLIENT_11_PSK_BASE64==" \
+    allowed-address=10.7.0.11/32,10.7.0.0/24,192.168.0.0/16
+
+# Example with spaces, quotes, and multi-token values; demonstrates the parser's handling.
+add name=client-10.7.0.12 client-address=10.7.0.12/32 \
+    endpoint-address="vpn.example.com" endpoint-port=51820 \
+    private-key=CLIENT_12_PRIVATE_KEY_BASE64== public-key=CLIENT_12_PUBLIC_KEY_BASE64== \
+    preshared-key=CLIENT_12_PSK_BASE64== \
+    allowed-address=10.7.0.12/32, 10.7.0.0/24, 192.168.10.0/24
+
+# Another section to show the parser ignores other RouterOS sections
+/ip address
+add address=192.0.2.1/24 interface=ether1
