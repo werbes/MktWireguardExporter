@@ -71,4 +71,4 @@ Rename/copy these to `wg.conf` and `wg.rsc` respectively and fill in real keys a
 
 
 ## License
-MIT (or your preferred license). Update this section before publishing if needed.
+No licenses attached - grap your copy and have fun.
